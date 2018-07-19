@@ -25,8 +25,9 @@ export const deleteUser = (id) => dispatch => {
 }
 export const updateUser = (userData, id) => dispatch => {
     axios.put('http://localhost:9020/users/' + id + '', userData)
-        .then(dispatch({
-        type: UPDATE_USER
+        .then(user => dispatch({
+            type: UPDATE_USER,
+            payload: user.data    
     }));
 
 }

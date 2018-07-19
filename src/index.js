@@ -10,11 +10,11 @@ import UserForm from './components/UserForm';
 
 ReactDOM.render(
     <BrowserRouter>
-    <Provider store={store}>
-    <div>    
-                <Route path="/" exact component={App} />
-                <Route path="/edit/:id" component={UserForm} />
-    </div>        
+        <Provider store={store}>
+                <div>    
+                    <Route path="/" exact component={App} />
+                    <Route path="/edit/:id" component={UserForm} />
+                </div>        
         </Provider>
     </BrowserRouter>    
     , document.getElementById('root'));
