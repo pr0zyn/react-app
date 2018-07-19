@@ -9,18 +9,12 @@ class Users extends Component {
 
     }
     componentWillReceiveProps(newUser, id) { 
-        if (newUser.newUser && Object.keys(newUser.newUser).length !== 0) { 
-            console.log(newUser,id,'ID ITEM');
-            
+        if (newUser.newUser && Object.keys(newUser.newUser).length !== 0) {             
             this.props.users.unshift(newUser.newUser);
         }
-        console.log(newUser.id);
-        console.log(Object.values(newUser.id).length);
-        console.log(Object.values(newUser.id).length !== 0);
+       
         if (Object.keys(newUser.id).length !== 0) { 
-            console.log(newUser.id);
             this.props.users.filter(user => { user.id !== newUser.id });
-            console.log(this.props.users,'after filter');
         }
     }
 

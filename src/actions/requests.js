@@ -16,15 +16,15 @@ export const createUser = (userData) => dispatch => {
     }));
 }
 export const deleteUser = (id) => dispatch => {
-    axios.delete('http://localhost:9020/userss/' + id + '')
+    axios.delete('http://localhost:9020/users/' + id + '')
         .then(dispatch({
             type: DELETE_USER,
             payload:id
     }));
 
 }
-export const updateUser = (userData,id) => dispatch => {
-    axios.put('http://localhost:9020/users/' + id + '',userData)
+export const updateUser = (userData, id) => dispatch => {
+    axios.put('http://localhost:9020/users/' + id + '', userData)
         .then(dispatch({
         type: UPDATE_USER
     }));

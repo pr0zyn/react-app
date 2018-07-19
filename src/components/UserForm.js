@@ -10,8 +10,7 @@ import { Link } from 'react-router-dom';
             username:'',
             email:'',
             phone:'',
-            website: '',
-            redirect:false
+            website: ''
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -28,8 +27,7 @@ import { Link } from 'react-router-dom';
                 username:  data.data.username,
                 email:  data.data.email,
                 phone:  data.data.phone,
-                website: data.data.website,
-                redirect:true
+                website: data.data.website
             });    
         }
     } 
@@ -48,7 +46,7 @@ import { Link } from 'react-router-dom';
             }
             if (this.props.match !== undefined && this.props.match.params.id !== undefined) {
                 this.props.updateUser(data,this.props.match.params.id);
-                
+                this.props.history.push("/");
             } else { 
                 this.props.createUser(data);
             }
@@ -81,12 +79,7 @@ import { Link } from 'react-router-dom';
                             <input type="text" className="form-control" value={this.state.phone} name="phone" onChange={this.onChange}/>
                     </div>
                     </div>
-                {this.state.redirect ? (
-                        <Link to="/"><button className="btn btn-success" type="submit">Submit</button></Link>
-                        // <Link to="/"><button className="btn btn-default" type="submit">Back to list</button></Link>
-                    ):(
-                    <button className="btn btn-success" type="submit">Submit</button>
-                    )}
+                        <button className="btn btn-success" type="submit">Submit</button>                  
             </form>    
       </div>
     )
@@ -96,16 +89,5 @@ import { Link } from 'react-router-dom';
  const mapStateToProps = state => ({
     data: state.users.item
 });
-
-// const mapStateToProps = (state,props) => {
-//     if (props.match !== undefined && props.match.params.id !== undefined) {
-//         return {
-//             data: state.users.item
-//         }
-//     } else { 
-//         return{ data: null };
-//     }
-// };
-// console.log(mapStateToProps);
 
 export default connect(mapStateToProps, {createUser,getUser,updateUser})(UserForm);
